@@ -10,17 +10,24 @@ class ContactUs extends StatelessWidget {
   const ContactUs({super.key});
 
   final String facebookUrl =
-      "https://www.facebook.com/profile.php?id=hedaya.dev";
+      "https://www.facebook.com/share/199ZY4S5iG/?mibextid=wwXIfr";
   final String whatsappUrl = "https://wa.me/201027888676";
+
+  Future<void> _launchUrl(String url) async {
+    final Uri uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('نفسك تعرف أكتر؟', style: AppStyles.style20W400ConstactUs),
+        Text('نفسك تعرف أكتر؟', style: AppStyles.style14W400ConstactUs),
         SizedBox(height: 10.h),
-        Text('تابعنا على', style: AppStyles.style20W400ConstactUs),
+        Text('تابعنا على', style: AppStyles.style14W400ConstactUs),
         SizedBox(height: 5.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -31,11 +38,7 @@ class ContactUs extends StatelessWidget {
                 width: 50.w,
                 height: 50.h,
               ),
-              onPressed: () async {
-                if (await canLaunch(facebookUrl)) {
-                  await launch(facebookUrl);
-                }
-              },
+              onPressed: () => _launchUrl(facebookUrl),
             ),
             SizedBox(width: 20.w),
             IconButton(
@@ -44,11 +47,7 @@ class ContactUs extends StatelessWidget {
                 width: 40.w,
                 height: 40.h,
               ),
-              onPressed: () async {
-                if (await canLaunch(whatsappUrl)) {
-                  await launch(whatsappUrl);
-                }
-              },
+              onPressed: () => _launchUrl(whatsappUrl),
             ),
           ],
         ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:next_gen/core/utils/app_colors.dart';
 import 'package:next_gen/core/utils/assets.dart';
 
@@ -9,25 +10,25 @@ class InvestmentsRecommended extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.30,
+      height: 250.h, // ✅ ارتفاع متجاوب مثل InvestmentsListViewSection
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 5,
         itemBuilder: (context, index) {
           return InkWell(
             onTap: () {
-              // context.push("/investmentsView");
+              context.push("/InvestmentsView");
             },
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.50,
+              width: 180.w, // ✅ عرض متجاوب مثل InvestmentsListViewSection
               child: Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(12.r),
                 ),
                 elevation: 4,
                 color: AppColors.colorInCardHome,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.w),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -36,7 +37,7 @@ class InvestmentsRecommended extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            radius: 24,
+                            radius: 24.r,
                             child: Image.asset(Assets.imagesLogoInCaed3),
                           ),
                           Container(
@@ -44,16 +45,16 @@ class InvestmentsRecommended extends StatelessWidget {
                               shape: BoxShape.circle,
                               border: Border.all(),
                             ),
-                            padding: const EdgeInsets.all(6),
-                            child: const Icon(
+                            padding: EdgeInsets.all(6.w),
+                            child: Icon(
                               Icons.arrow_outward,
-                              size: 20,
+                              size: 20.sp,
                               color: Colors.black,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       Text(
                         "Digitzoid",
                         style: TextStyle(
@@ -61,19 +62,30 @@ class InvestmentsRecommended extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4.h),
                       Text(
                         "\$40,000",
-                        style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.grey[700],
+                        ),
                       ),
-                      const SizedBox(height: 6),
-                      const Text(
-                        "Fintech app development provides more freedom to banking and other financial institutions..",
-                        maxLines: 4,
-                        overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 14, color: Colors.black),
+                      SizedBox(height: 6.h),
+                      Expanded(
+                        // ✅ استخدام Expanded لمنع overflow
+                        child: Text(
+                          "Fintech app development provides more freedom to banking and other financial institutions..",
+                          maxLines: 3,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontSize: 14.sp,
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
-                      const Spacer(),
+                      SizedBox(
+                        height: 6.h,
+                      ), // ✅ إضافة تباعد قبل Progress Indicator
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -82,11 +94,11 @@ class InvestmentsRecommended extends StatelessWidget {
                             backgroundColor: Colors.grey[300],
                             color: Colors.black,
                           ),
-                          const SizedBox(height: 4),
-                          const Text(
+                          SizedBox(height: 4.h),
+                          Text(
                             "45%  In Progress",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 12.sp,
                               fontWeight: FontWeight.bold,
                               color: AppColors.colorInProgress,
                             ),

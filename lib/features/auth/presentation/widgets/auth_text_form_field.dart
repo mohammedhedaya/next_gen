@@ -26,8 +26,14 @@ class AuthTextFormField extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText ?? false,
       keyboardType: keyboardType,
-      onChanged: onChanged,
-      validator: validator ??
+      onChanged: (value) {
+        if (onChanged != null) {
+          onChanged!(value);
+        }
+      },
+      autovalidateMode: AutovalidateMode.onUserInteraction, // إضافة هذه الخاصية
+      validator:
+          validator ??
           (value) {
             if (value!.isEmpty) {
               return 'هذا الحقل مطلوب';
@@ -35,18 +41,17 @@ class AuthTextFormField extends StatelessWidget {
             return null;
           },
       decoration: InputDecoration(
-        filled: true, 
-        fillColor: Colors.white, 
+        filled: true,
+        fillColor: Colors.white,
         hintText: hintText,
         hintStyle: TextStyle(
           fontSize: 14.sp,
           fontWeight: FontWeight.w400,
-          color: Colors.grey.shade500, 
+          color: Colors.grey.shade500,
         ),
         border: _buildBorder(),
         focusedBorder: _buildBorder(),
         enabledBorder: _buildBorder(),
-
         prefixIcon: Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: Row(
@@ -55,17 +60,13 @@ class AuthTextFormField extends StatelessWidget {
               Container(
                 padding: EdgeInsets.all(8.w),
                 decoration: BoxDecoration(
-                  color: Colors.white, 
+                  color: Colors.white,
                   borderRadius: BorderRadius.circular(4.r),
                 ),
                 child: Icon(prefix, size: 18.w, color: Colors.black),
               ),
-              SizedBox(width: 10.w), // مسافة صغيرة
-              Container(
-                width: 1.w,
-                height: 20.h,
-                color: Colors.grey.shade400, // لون الخط الفاصل
-              ),
+              SizedBox(width: 10.w),
+              Container(width: 1.w, height: 20.h, color: Colors.grey.shade400),
             ],
           ),
         ),
@@ -77,10 +78,7 @@ class AuthTextFormField extends StatelessWidget {
   OutlineInputBorder _buildBorder() {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(4.r),
-      borderSide: BorderSide(
-        color: Colors.grey.shade400,
-        width: 1.w,
-      ),
+      borderSide: BorderSide(color: Colors.grey.shade400, width: 1.w),
     );
   }
 }

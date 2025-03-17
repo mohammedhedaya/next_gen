@@ -47,17 +47,24 @@ class _LoginViewState extends State<LoginView> {
 
                   SizedBox(height: 40.h),
 
-                  const AuthTextFormField(
+                  AuthTextFormField(
                     hintText: 'Email',
                     prefix: Icons.email_outlined,
                     keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                   ),
+
                   SizedBox(height: 15.h),
 
                   AuthTextFormField(
                     hintText: 'Password',
                     prefix: Icons.lock_outline,
                     obscureText: !_isPasswordVisible,
+                    onChanged: (value) {
+                      setState(() {});
+                    },
                     suffixIcon: IconButton(
                       icon: Icon(
                         _isPasswordVisible
@@ -71,6 +78,7 @@ class _LoginViewState extends State<LoginView> {
                       },
                     ),
                   ),
+
                   SizedBox(height: 20.h),
 
                   buildButton(
@@ -78,9 +86,9 @@ class _LoginViewState extends State<LoginView> {
                     color: AppColors.buttomTwoInLogin,
                     textColor: AppColors.blackColor,
                     onPressed: () {
-                      context.push("/bottomNavBar");
-
-                      if (_formKey.currentState!.validate()) {}
+                      if (_formKey.currentState!.validate()) {
+                        context.push("/bottomNavBar");
+                      }
                     },
                   ),
                   SizedBox(height: 15.h),

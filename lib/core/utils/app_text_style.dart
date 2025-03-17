@@ -45,8 +45,8 @@ class AppStyles {
     color: AppColors.grayColor,
     fontFamily: "Kurale-Regular",
   );
-  static TextStyle style20W400ConstactUs = TextStyle(
-    fontSize: 20.sp,
+  static TextStyle style14W400ConstactUs = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeight.bold,
     color: AppColors.whiteColor,
     fontFamily: "Tajawal",

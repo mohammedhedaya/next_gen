@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:next_gen/core/utils/app_colors.dart';
 import 'package:next_gen/core/utils/app_text_style.dart';
@@ -12,27 +13,29 @@ class ProfileViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
+      child: Padding(
+        padding: EdgeInsets.all(16.w), // جعل التباعد متجاوبًا
         child: Column(
           children: [
             SizedBox(
-              width: 120,
-              height: 120,
+              width: 120.w, // جعل العرض متجاوبًا
+              height: 120.h, // جعل الارتفاع متجاوبًا
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(100),
-                child: Image.asset(Assets.imagesOnboardingThree),
+                borderRadius: BorderRadius.circular(
+                  100.r,
+                ), // ضبط الحدود بشكل متجاوب
+                child: Image.asset(Assets.imagesOmar),
               ),
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h), // ضبط المسافات
             Text('Omar Hesham', style: AppStyles.style14W400),
             Text('omar.hesham.213@gmail.com', style: AppStyles.style12W400),
-            const SizedBox(height: 20),
+            SizedBox(height: 20.h),
 
-            const Divider(),
-            const SizedBox(height: 10),
+            Divider(thickness: 1.h), // ضبط الخط الفاصل ليكون متجاوبًا
+            SizedBox(height: 10.h),
 
-            ///Menu
+            /// القائمة
             ProfileMenuWidget(
               title: 'Our Location',
               icon: LineAwesomeIcons.location_arrow_solid,
@@ -51,7 +54,6 @@ class ProfileViewBody extends StatelessWidget {
               onPress: () {},
               endIcon: true,
             ),
-
             ProfileMenuWidget(
               title: 'Information',
               icon: LineAwesomeIcons.info_solid,
@@ -65,7 +67,8 @@ class ProfileViewBody extends StatelessWidget {
               onPress: () {},
               endIcon: true,
             ),
-            const SizedBox(height: 30),
+
+            SizedBox(height: 30.h),
             const ContactUs(),
           ],
         ),

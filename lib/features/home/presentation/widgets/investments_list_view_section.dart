@@ -10,7 +10,7 @@ class InvestmentsListViewSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.30,
+      height: 250.h, // ارتفاع متجاوب
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 5,
@@ -20,15 +20,15 @@ class InvestmentsListViewSection extends StatelessWidget {
               context.push("/InvestmentsView");
             },
             child: SizedBox(
-              width: MediaQuery.of(context).size.width * 0.50,
+              width: 180.w, // عرض متجاوب
               child: Card(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(12.r), // زوايا متجاوبة
                 ),
                 elevation: 4,
                 color: AppColors.colorInCardHome,
                 child: Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: EdgeInsets.all(12.w), // تباعد متجاوب
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -37,7 +37,7 @@ class InvestmentsListViewSection extends StatelessWidget {
                         children: [
                           CircleAvatar(
                             backgroundColor: Colors.white,
-                            radius: 24,
+                            radius: 24.r, // حجم متجاوب
                             child: Image.asset(Assets.imagesLogoInCaed),
                           ),
                           Container(
@@ -45,34 +45,40 @@ class InvestmentsListViewSection extends StatelessWidget {
                               shape: BoxShape.circle,
                               border: Border.all(),
                             ),
-                            padding: const EdgeInsets.all(6),
-                            child: const Icon(
+                            padding: EdgeInsets.all(6.w), // تباعد متجاوب
+                            child: Icon(
                               Icons.arrow_outward,
-                              size: 20,
+                              size: 20.sp, // حجم أيقونة متجاوب
                               color: Colors.black,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8.h), // مسافة متجاوبة
                       Text(
                         "Rave",
                         style: TextStyle(
-                          fontSize: 20.sp,
+                          fontSize: 20.sp, // حجم الخط متجاوب
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizedBox(height: 4),
+                      SizedBox(height: 4.h), // مسافة متجاوبة
                       Text(
                         "\$65,000",
-                        style: TextStyle(fontSize: 12, color: Colors.grey[700]),
+                        style: TextStyle(
+                          fontSize: 12.sp,
+                          color: Colors.grey[700],
+                        ), // خط متجاوب
                       ),
-                      const SizedBox(height: 6),
-                      const Text(
+                      SizedBox(height: 6.h), // مسافة متجاوبة
+                      Text(
                         "Fintech app development provides more freedom to banking and other financial institutions.",
                         maxLines: 3,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 14, color: Colors.black),
+                        style: TextStyle(
+                          fontSize: 14.sp,
+                          color: Colors.black,
+                        ), // خط متجاوب
                       ),
                       const Spacer(),
                       Column(
@@ -83,11 +89,11 @@ class InvestmentsListViewSection extends StatelessWidget {
                             backgroundColor: Colors.grey[300],
                             color: Colors.black,
                           ),
-                          const SizedBox(height: 4),
-                          const Text(
+                          SizedBox(height: 4.h), // مسافة متجاوبة
+                          Text(
                             "78%  In Progress",
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 12.sp, // خط متجاوب
                               fontWeight: FontWeight.bold,
                               color: AppColors.colorInProgress,
                             ),
