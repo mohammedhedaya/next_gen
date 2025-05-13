@@ -48,7 +48,7 @@ final GoRouter router = GoRouter(
     ),
      GoRoute(
       path: '/teamPage',
-      builder: (context, state) =>  TeamPage(),
+      builder: (context, state) =>  const TeamPage(),
     ),
     GoRoute(path: '/newsView', builder: (context, state) => const NewsView()),
   ],

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:next_gen/core/utils/app_colors.dart';
+import 'package:next_gen/core/utils/assets.dart';
 
 class TeamMember {
   final String name;
@@ -16,53 +17,66 @@ class TeamMember {
   });
 }
 
-class TeamPage extends StatelessWidget {
+class TeamPage extends StatefulWidget {
+  const TeamPage({super.key});
+
+  @override
+  State<TeamPage> createState() => _TeamPageState();
+}
+
+class _TeamPageState extends State<TeamPage> {
   final List<TeamMember> teamMembers = [
     TeamMember(
       name: 'Omar Hesham',
       role: 'Flutter Developer',
       icon: Icons.phone_android,
-      image: 'https://i.pravatar.cc/150?img=1',
+      image: Assets.imagesOmar,
     ),
     TeamMember(
       name: 'Abdelrahman Saber',
       role: 'Backend Developer',
       icon: Icons.storage_rounded,
-      image: 'https://i.pravatar.cc/150?img=2',
+      image: Assets.imagesSaber,
     ),
     TeamMember(
       name: 'Mohamed Mehrez',
       role: 'Frontend Developer',
       icon: Icons.web_rounded,
-      image: 'https://i.pravatar.cc/150?img=3',
+      image: Assets.imagesMehrez,
     ),
     TeamMember(
       name: 'Youssef Ismail',
       role: 'UI/UX Designer',
       icon: Icons.design_services,
-      image: 'https://i.pravatar.cc/150?img=4',
+      image: Assets.imagesYousef,
     ),
     TeamMember(
       name: 'Ahmed Elgalad',
       role: 'DevOps Engineer',
       icon: Icons.cloud,
-      image: 'https://i.pravatar.cc/150?img=5',
+      image: Assets.imagesElgalad,
     ),
     TeamMember(
       name: 'Ahmed Badie',
       role: 'QA & Testing',
       icon: Icons.bug_report,
-      image: 'https://i.pravatar.cc/150?img=6',
+      image: Assets.imagesBadie,
     ),
     TeamMember(
       name: 'Belal Saleh',
       role: 'Project Manager',
       icon: Icons.leaderboard_rounded,
-      image: 'https://i.pravatar.cc/150?img=7',
+      image: Assets.imagesBelal,
     ),
   ];
 
-  TeamPage({super.key});
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    for (var member in teamMembers) {
+      precacheImage(AssetImage(member.image), context);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -88,168 +102,140 @@ class TeamPage extends StatelessWidget {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
       ),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: constraints.maxWidth < 600 ? 16.w : 32.w,
-                vertical: 24.h,
+      body: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: screenWidth < 600 ? 16.w : 32.w,
+          vertical: 16.h,
+        ),
+        child: CustomScrollView(
+          slivers: [
+            SliverGrid(
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  final member = teamMembers[index];
+                  return _buildTeamCard(member, screenWidth);
+                },
+                childCount: teamMembers.length,
               ),
-              child: Column(
-                children: [
-                  GridView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: teamMembers.length,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: crossAxisCount,
-                      mainAxisSpacing: 20.h,
-                      crossAxisSpacing: 16.w,
-                      childAspectRatio: childAspectRatio,
-                    ),
-                    itemBuilder: (context, index) {
-                      final member = teamMembers[index];
-                      return _buildTeamCard(
-                        member,
-                        index,
-                        constraints.maxWidth,
-                      );
-                    },
-                  ),
-                ],
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                mainAxisSpacing: 20.h,
+                crossAxisSpacing: 16.w,
+                childAspectRatio: childAspectRatio,
               ),
             ),
-          );
-        },
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildTeamCard(TeamMember member, int index, double screenWidth) {
+  Widget _buildTeamCard(TeamMember member, double screenWidth) {
     final color = _getRoleColor(member.role);
     final avatarRadius = screenWidth < 600 ? 38.r : 42.r;
     final fontSize = screenWidth < 600 ? 13.sp : 14.sp;
     final iconSize = screenWidth < 600 ? 10.w : 10.w;
 
-    return TweenAnimationBuilder<double>(
-      duration: Duration(milliseconds: 500 + (index * 100)),
-      tween: Tween(begin: 0.0, end: 1.0),
-      curve: Curves.easeOutBack,
-      builder: (context, value, child) {
-        final safeValue = value.clamp(0.0, 1.0);
-        return Transform.scale(
-          scale: safeValue,
-          child: Opacity(opacity: safeValue, child: child),
-        );
-      },
-      child: Card(
-        shape: RoundedRectangleBorder(
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20.r),
+      ),
+      elevation: 4,
+      shadowColor: color.withOpacity(0.2),
+      child: Container(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20.r),
-        ),
-        elevation: 4,
-        shadowColor: color.withOpacity(0.2),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.r),
-            gradient: LinearGradient(
-              colors: [Colors.white, color.withOpacity(0.05)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+          gradient: LinearGradient(
+            colors: [Colors.white, color.withOpacity(0.05)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
           ),
-          child: Padding(
-            padding: EdgeInsets.all(
-              screenWidth < 600 ? 20.w : 20.w,
-            ), // زيادة الحجم
-            child: SingleChildScrollView(
-              // Wrap the Column with SingleChildScrollView
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(3.w),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      gradient: LinearGradient(
-                        colors: [color, color.withOpacity(0.7)],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: color.withOpacity(0.3),
-                          blurRadius: 10,
-                          spreadRadius: 2,
-                        ),
-                      ],
-                    ),
-                    child: CircleAvatar(
-                      radius: avatarRadius,
-                      backgroundColor: Colors.white,
-                      child: CircleAvatar(
-                        radius: avatarRadius - 2.r,
-                        backgroundImage: NetworkImage(member.image),
-                      ),
-                    ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(20.w),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(3.w),
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: LinearGradient(
+                    colors: [color, color.withOpacity(0.7)],
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                   ),
-                  SizedBox(height: screenWidth < 600 ? 16.h : 20.h),
-                  Text(
-                    member.name,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.deepPurple[800],
-                    ),
-                  ),
-                  SizedBox(height: screenWidth < 600 ? 8.h : 25.h),
-                  Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 2.w,
-                      vertical: 2.h,
-                    ),
-                    decoration: BoxDecoration(
-                      color: color.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(20.r),
-                      border: Border.all(color: color.withOpacity(0.3)),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Icon(member.icon, size: iconSize, color: color),
-                        SizedBox(width: 6.w),
-                        Flexible(
-                          child: Text(
-                            member.role,
-                            overflow: TextOverflow.ellipsis,
-                            style: TextStyle(
-                              fontSize: screenWidth < 600 ? 12.sp : 14.sp,
-                              color: color,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  if (screenWidth >= 600) ...[
-                    SizedBox(height: 16.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        _buildSocialButton(Icons.email, color, screenWidth),
-                        SizedBox(width: 12.w),
-                        _buildSocialButton(Icons.link, color, screenWidth),
-                        SizedBox(width: 12.w),
-                        _buildSocialButton(Icons.phone, color, screenWidth),
-                      ],
+                  boxShadow: [
+                    BoxShadow(
+                      color: color.withOpacity(0.3),
+                      blurRadius: 10,
+                      spreadRadius: 2,
                     ),
                   ],
-                ],
+                ),
+                child: CircleAvatar(
+                  radius: avatarRadius,
+                  backgroundColor: Colors.white,
+                  child: CircleAvatar(
+                    radius: avatarRadius - 2.r,
+                    backgroundImage: AssetImage(member.image),
+                  ),
+                ),
               ),
-            ),
+              SizedBox(height: screenWidth < 600 ? 16.h : 20.h),
+              Text(
+                member.name,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.deepPurple[800],
+                ),
+              ),
+              SizedBox(height: screenWidth < 600 ? 8.h : 25.h),
+              Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 2.w,
+                  vertical: 2.h,
+                ),
+                decoration: BoxDecoration(
+                  color: color.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(20.r),
+                  border: Border.all(color: color.withOpacity(0.3)),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(member.icon, size: iconSize, color: color),
+                    SizedBox(width: 6.w),
+                    Flexible(
+                      child: Text(
+                        member.role,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontSize: screenWidth < 600 ? 12.sp : 14.sp,
+                          color: color,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              if (screenWidth >= 600) ...[
+                SizedBox(height: 16.h),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    _buildSocialButton(Icons.email, color, screenWidth),
+                    SizedBox(width: 12.w),
+                    _buildSocialButton(Icons.link, color, screenWidth),
+                    SizedBox(width: 12.w),
+                    _buildSocialButton(Icons.phone, color, screenWidth),
+                  ],
+                ),
+              ],
+            ],
           ),
         ),
       ),

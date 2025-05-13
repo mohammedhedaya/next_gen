@@ -1,11 +1,18 @@
 // ignore_for_file: prefer_single_quotes
 class Assets {
   Assets._();
-
+  
   /// Assets for imagesBackgroundImage
   /// assets/images/backgroundImage.png
-  static const String imagesBackgroundImage =
-      "assets/images/backgroundImage.png";
+  static const String imagesBackgroundImage = "assets/images/backgroundImage.png";
+
+  /// Assets for imagesBadie
+  /// assets/images/badie.jpg
+  static const String imagesBadie = "assets/images/badie.jpg";
+
+  /// Assets for imagesBelal
+  /// assets/images/belal.jpg
+  static const String imagesBelal = "assets/images/belal.jpg";
 
   /// Assets for imagesDefaultimage
   /// assets/images/defaultimage.png
@@ -14,6 +21,10 @@ class Assets {
   /// Assets for imagesDesign
   /// assets/images/design.svg
   static const String imagesDesign = "assets/images/design.svg";
+
+  /// Assets for imagesElgalad
+  /// assets/images/elgalad.jpg
+  static const String imagesElgalad = "assets/images/elgalad.jpg";
 
   /// Assets for imagesFacebookLogo
   /// assets/images/facebook_Logo.svg
@@ -67,6 +78,10 @@ class Assets {
   /// assets/images/logo_whatsapp.svg
   static const String imagesLogoWhatsapp = "assets/images/logo_whatsapp.svg";
 
+  /// Assets for imagesMehrez
+  /// assets/images/mehrez.jpg
+  static const String imagesMehrez = "assets/images/mehrez.jpg";
+
   /// Assets for imagesNews
   /// assets/images/news.svg
   static const String imagesNews = "assets/images/news.svg";
@@ -81,8 +96,7 @@ class Assets {
 
   /// Assets for imagesOnboardingThree
   /// assets/images/onboardingThree.png
-  static const String imagesOnboardingThree =
-      "assets/images/onboardingThree.png";
+  static const String imagesOnboardingThree = "assets/images/onboardingThree.png";
 
   /// Assets for imagesOnboardingTwo
   /// assets/images/onboardingTwo.png
@@ -92,6 +106,10 @@ class Assets {
   /// assets/images/profile.svg
   static const String imagesProfile = "assets/images/profile.svg";
 
+  /// Assets for imagesSaber
+  /// assets/images/saber.jpg
+  static const String imagesSaber = "assets/images/saber.jpg";
+
   /// Assets for imagesSplash
   /// assets/images/splash.png
   static const String imagesSplash = "assets/images/splash.png";
@@ -99,4 +117,9 @@ class Assets {
   /// Assets for imagesWelcome
   /// assets/images/welcome.png
   static const String imagesWelcome = "assets/images/welcome.png";
+
+  /// Assets for imagesYousef
+  /// assets/images/yousef.jpg
+  static const String imagesYousef = "assets/images/yousef.jpg";
 }
+
