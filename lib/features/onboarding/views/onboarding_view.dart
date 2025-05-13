@@ -22,7 +22,10 @@ class _OnboardingPageState extends State<OnboardingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("NextGen", style: AppStyles.style24W500.copyWith(fontSize: 24.sp)),
+        title: Text(
+          "NextGen",
+          style: AppStyles.style24W500.copyWith(fontSize: 24.sp),
+        ),
         centerTitle: true,
         backgroundColor: AppColors.primaryColor,
         surfaceTintColor: Colors.transparent,
@@ -67,8 +70,8 @@ class _OnboardingPageState extends State<OnboardingPage> {
                   // Images
                   Image.asset(
                     controller.items[currentIndex].image,
-                    width: 357.w, 
-                    height: 268.h, 
+                    width: 357.w,
+                    height: 268.h,
                   ),
 
                   SizedBox(height: 10.h),
@@ -81,7 +84,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     text: TextSpan(
                       style: AppStyles.style21W600.copyWith(
                         color: Colors.white,
-                        fontSize: 21.sp, 
+                        fontSize: 21.sp,
                       ),
                       children: highlightWords(
                         controller.items[currentIndex].text,
@@ -132,7 +135,7 @@ List<TextSpan> highlightWords(String text) {
         style: TextStyle(
           color: color ?? Colors.white,
           fontWeight: color != null ? FontWeight.bold : FontWeight.normal,
-          fontSize: 21.sp, 
+          fontSize: 21.sp,
         ),
       ),
     );

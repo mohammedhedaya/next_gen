@@ -15,45 +15,12 @@ class RecommendedSection extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [Text("Recommended", style: AppStyles.style21W600)],
-        ),
-        SizedBox(height: 15.h),
-        Wrap(
-          spacing: 10.w,
-          runSpacing: 10.h,
           children: [
-            _buildCategoryChip(Assets.imagesFinance, "Finance"),
-            _buildCategoryChip(Assets.imagesDesign, "Design"),
-            _buildCategoryChip(Assets.imagesHealth, "Health"),
+            Text("Recommended Investments", style: AppStyles.style21W600),
           ],
         ),
+        SizedBox(height: 15.h),
       ],
-    );
-  }
-
-  Widget _buildCategoryChip(String iconPath, String label) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 8.h),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: BorderRadius.circular(16.r),
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SvgPicture.asset(
-            iconPath,
-            width: 24.w,
-            height: 24.h,
-            colorFilter: const ColorFilter.mode(Colors.black, BlendMode.srcIn),
-          ),
-          SizedBox(width: 6.w),
-          Text(
-            label,
-            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
-          ),
-        ],
-      ),
     );
   }
 }

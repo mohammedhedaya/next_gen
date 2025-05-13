@@ -1,14 +1,13 @@
 import 'package:flutter/foundation.dart';
+import 'package:next_gen/core/cache/cache_helper.dart';
 import 'package:next_gen/core/constants/constants.dart';
+import 'package:next_gen/core/service/service_locator.dart';
 
+String? userId;
 
-//! get user token and id 
 Future<void> getUserTokenAndID() async {
-  // token = await getIt<CacheHelper>().getData(key: ApiKeys.token);
-  // userId = await getIt<CacheHelper>().getData(key: ApiKeys.userId);
-  if (kDebugMode) {
-    print("token is $token");
-  }
+  userId = await getIt<CacheHelper>().getData(key: "userId");
+
   if (kDebugMode) {
     print("userId is $userId");
   }

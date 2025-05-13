@@ -25,9 +25,9 @@ class ContactUs extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('نفسك تعرف أكتر؟', style: AppStyles.style14W400ConstactUs),
+        Text('Want to know more?', style: AppStyles.style14W400ConstactUs),
         SizedBox(height: 10.h),
-        Text('تابعنا على', style: AppStyles.style14W400ConstactUs),
+        Text('Follow us', style: AppStyles.style14W400ConstactUs),
         SizedBox(height: 5.h),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

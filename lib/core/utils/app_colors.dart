@@ -17,4 +17,5 @@ class AppColors {
   static const Color colorInCard2Home = Color(0xffDEECEC);
   static const Color colorInCard3Home = Color(0xffD8CEED);
   static const Color colorInProgress = Color(0xff3E4ADE);
+  static const Color redColor = Color(0xffFF0000);
 }

@@ -11,6 +11,7 @@ class AuthTextFormField extends StatelessWidget {
     this.keyboardType,
     this.onChanged,
     this.obscureText,
+    this.controller, // ⬅️ أضفنا هذا السطر
   });
 
   final String? Function(String?)? validator;
@@ -20,10 +21,12 @@ class AuthTextFormField extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final bool? obscureText;
+  final TextEditingController? controller; // ⬅️ أضفنا هذا السطر
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller, // ⬅️ مررناه هنا
       obscureText: obscureText ?? false,
       keyboardType: keyboardType,
       onChanged: (value) {
@@ -31,7 +34,7 @@ class AuthTextFormField extends StatelessWidget {
           onChanged!(value);
         }
       },
-      autovalidateMode: AutovalidateMode.onUserInteraction, // إضافة هذه الخاصية
+      autovalidateMode: AutovalidateMode.onUserInteraction,
       validator:
           validator ??
           (value) {

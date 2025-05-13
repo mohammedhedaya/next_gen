@@ -21,7 +21,7 @@ class CustomDots extends StatelessWidget {
           ),
           height: 7,
           width: currentIndex == index ? 30 : 7,
-          duration: const Duration(milliseconds: 300), 
+          duration: const Duration(milliseconds: 300),
         ),
       ),
     );

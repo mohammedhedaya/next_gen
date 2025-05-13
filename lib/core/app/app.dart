@@ -16,9 +16,7 @@ class MyApp extends StatelessWidget {
         return MaterialApp.router(
           title: 'NextGen',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-                    scaffoldBackgroundColor: AppColors.primaryColor,
-          ),
+          theme: ThemeData(scaffoldBackgroundColor: AppColors.primaryColor),
           routerConfig: router,
         );
       },

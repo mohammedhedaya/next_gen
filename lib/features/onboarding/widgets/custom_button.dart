@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:next_gen/core/cache/cache_helper.dart';
+import 'package:next_gen/core/service/service_locator.dart';
 import 'package:next_gen/core/utils/app_text_style.dart';
 import 'package:next_gen/features/onboarding/components/onboarding_data.dart';
 
@@ -22,15 +24,15 @@ class CustomButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.only(top: 40.h), 
+          margin: EdgeInsets.only(top: 40.h),
           width: 195.w,
-          height: 44.h, 
+          height: 44.h,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20.r),
             color: Colors.white,
           ),
           child: TextButton(
-            onPressed: () {
+            onPressed: () async {
               if (currentIndex != OnboardingData().items.length - 1) {
                 pageController.nextPage(
                   duration: const Duration(milliseconds: 500),
@@ -38,9 +40,14 @@ class CustomButton extends StatelessWidget {
                 );
                 onIndexChanged(currentIndex + 1);
               } else {
-                context.push("/chooselogin"); 
+                await getIt<CacheHelper>().saveData(
+                  key: "onBoardingDone",
+                  value: true,
+                );
+                context.push("/chooselogin");
               }
             },
+
             child: Text(
               currentIndex == OnboardingData().items.length - 1
                   ? "Get started"
@@ -49,15 +56,17 @@ class CustomButton extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 5.h), 
+        SizedBox(height: 5.h),
         TextButton(
-          onPressed: () {
-            context.push("/chooselogin"); 
+          onPressed: () async {
+            await getIt<CacheHelper>().saveData(
+              key: "onBoardingDone",
+              value: true,
+            );
+            context.push("/chooselogin");
           },
-          child: Text(
-            "Skip",
-            style: AppStyles.style20W400, 
-          ),
+
+          child: Text("Skip", style: AppStyles.style20W400),
         ),
       ],
     );

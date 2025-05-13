@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart'; // استيراد go_router
+import 'package:go_router/go_router.dart';
 import 'package:next_gen/core/utils/app_colors.dart';
 import 'package:next_gen/core/utils/app_text_style.dart';
 import 'package:next_gen/core/utils/assets.dart';
@@ -40,13 +40,13 @@ class ChooseLogin extends StatelessWidget {
               textColor: AppColors.blackColor,
               onPressed: () => context.push("/startUpView"),
             ),
-            SizedBox(height: 15.h),
-            buildButton(
-              text: 'Sign Up',
-              color: AppColors.buttomThreeInLogin,
-              textColor: AppColors.blackColor,
-              onPressed: () {},
-            ),
+            // SizedBox(height: 15.h),
+            // buildButton(
+            //   text: 'Sign Up',
+            //   color: AppColors.buttomThreeInLogin,
+            //   textColor: AppColors.blackColor,
+            //   onPressed: () {},
+            // ),
           ],
         ),
       ),

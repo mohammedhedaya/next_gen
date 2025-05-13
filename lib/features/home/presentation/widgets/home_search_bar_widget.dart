@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:next_gen/core/utils/app_colors.dart';
 import 'package:next_gen/core/utils/app_text_style.dart';
 
@@ -10,7 +11,7 @@ class HomeSearchBarWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // context.push("/searchView");
+        context.push("/searchView");
       },
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 16.w),

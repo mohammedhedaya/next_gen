@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "932221954715",
+    "project_id": "nextgen-fe041",
+    "storage_bucket": "nextgen-fe041.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:932221954715:android:ada31907319835ad1cf43e",
+        "android_client_info": {
+          "package_name": "com.nextGen.next_gen"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBiBQVuvy0buGC2H0XCtxdNWeKWw5XvFEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
