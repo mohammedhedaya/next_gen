@@ -70,7 +70,7 @@ class ContactUs extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Graduation Team',
+              'nextGen Team',
               style: TextStyle(
                 fontSize: 13.sp,
                 fontFamily: 'KaushanScript-Regular',
