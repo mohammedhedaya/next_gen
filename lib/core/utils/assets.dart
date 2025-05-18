@@ -54,6 +54,10 @@ class Assets {
   /// assets/images/imageTestNews2.png
   static const String imagesImageTestNews2 = "assets/images/imageTestNews2.png";
 
+  /// Assets for imagesInstagramLogo2022
+  /// assets/images/Instagram_logo_2022.svg
+  static const String imagesInstagramLogo2022 = "assets/images/Instagram_logo_2022.svg";
+
   /// Assets for imagesInvestments
   /// assets/images/investments.svg
   static const String imagesInvestments = "assets/images/investments.svg";

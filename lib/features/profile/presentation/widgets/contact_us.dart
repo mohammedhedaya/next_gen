@@ -9,8 +9,8 @@ import '../../../../core/utils/assets.dart';
 class ContactUs extends StatelessWidget {
   const ContactUs({super.key});
 
-  final String facebookUrl =
-      "https://www.facebook.com/share/199ZY4S5iG/?mibextid=wwXIfr";
+  final String instagramUrl =
+      "https://www.instagram.com/next_gen_inovators_/?utm_source=qr#";
   final String whatsappUrl = "https://wa.me/201027888676";
 
   Future<void> _launchUrl(String url) async {
@@ -34,11 +34,11 @@ class ContactUs extends StatelessWidget {
           children: [
             IconButton(
               icon: SvgPicture.asset(
-                Assets.imagesFacebookLogo,
+                Assets.imagesInstagramLogo2022,
                 width: 50.w,
                 height: 50.h,
               ),
-              onPressed: () => _launchUrl(facebookUrl),
+              onPressed: () => _launchUrl(instagramUrl),
             ),
             SizedBox(width: 20.w),
             IconButton(
